@@ -57,7 +57,7 @@ public class MovieControllerIT {
 		result.andExpect(status().isUnauthorized());
 	}	
 
-	@Test
+	@Test	// findById deve retornar filme quando o visitante ou usuário for autenticado
 	public void findByIdShouldReturnMovieWhenUserVisitorAuthenticated() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, visitorUsername, visitorPassword);
@@ -79,7 +79,7 @@ public class MovieControllerIT {
 		result.andExpect(jsonPath("$.genre.name").isNotEmpty());
 	}
 
-	@Test
+	@Test	// findById deve retornar filme quando membro autenticado
 	public void findByIdShouldReturnMovieWhenMemberAuthenticated() throws Exception {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, memberUsername, memberPassword);

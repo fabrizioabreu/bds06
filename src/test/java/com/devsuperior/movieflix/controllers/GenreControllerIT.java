@@ -41,7 +41,7 @@ public class GenreControllerIT {
 		memberPassword = "123456";
 	}
 
-	@Test
+	@Test	// encontrar todos devem retornar não autorizado quando não for um token válido
 	public void findAllShouldReturnUnauthorizedWhenNotValidToken() throws Exception {
 
 		ResultActions result =

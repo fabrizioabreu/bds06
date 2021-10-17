@@ -64,7 +64,7 @@ public class ReviewResourceIT {
 		result.andExpect(status().isUnauthorized());
 	}
 	
-	@Test
+	@Test	// inserir deve retornar proibido quando o visitante é autenticado
 	public void insertShouldReturnForbiddenWhenVisitorAuthenticated() throws Exception {
 	
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, visitorUsername, visitorPassword);
@@ -85,7 +85,7 @@ public class ReviewResourceIT {
 		result.andExpect(status().isForbidden());
 	}
 	
-	@Test
+	@Test	// inserir deve inserir revisão quando o membro é autenticado e dados válidos
 	public void insertShouldInsertReviewWhenMemberAuthenticatedAndValidData() throws Exception {
 		
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, memberUsername, memberPassword);
@@ -118,7 +118,7 @@ public class ReviewResourceIT {
 		result.andExpect(jsonPath("$.user.email").value(memberUsername));
 	}
 
-	@Test
+	@Test	// insert deve retornar UnprocessableEntity quando membro autenticado e dados inválidos
 	public void insertShouldReturnUnproccessableEntityWhenMemberAuthenticatedAndInvalidData() throws Exception {
 		
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, memberUsername, memberPassword);
